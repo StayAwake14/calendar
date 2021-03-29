@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~animate.css/animate";
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    transition-duration: 300ms;
+    -webkit-animation: fadeOut 300ms linear;
+            animation: fadeOut 300ms linear;
+  }
+  
+  .has-tooltip:hover .tooltip {
+    visibility: visible;
+    z-index: 100;
+    transition-duration: 300ms;
+    -webkit-animation: fadeIn 300ms linear;
+            animation: fadeIn 300ms linear;
+  }
