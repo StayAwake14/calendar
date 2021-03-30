@@ -151,7 +151,7 @@ class CalendarController extends Controller
             }
         }
 
-        return view('calendar.index', [
+        return view('calendar', [
             'calendar' => $calendar,
             'month_days' => $monthLength,
             'monthName' => $monthName,

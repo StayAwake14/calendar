@@ -11,7 +11,7 @@ use App\Models\users;
 class UserAuthController extends Controller
 {
     function login(){
-        return view('auth.login');
+        return view('calendar');
     }
 
     function register(){
@@ -77,7 +77,7 @@ class UserAuthController extends Controller
                 'LoggedUserInfo'=>$user
             ];
         }
-        return view('admin.profile', $data);
+        return view('profile', $data);
     }
 
     function logout(){

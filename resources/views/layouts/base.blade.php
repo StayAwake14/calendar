@@ -7,16 +7,18 @@
         <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
-     
 
-        <div class="container mx-auto">
-            @extends('calendar.app')
-            @section('content')
-            @endsection
+    @yield('login')
 
-            @extends('auth.login')
-            @section('login')
-            @endsection
-        </div>
+    @yield('calendar')
+
+    @yield('profile')
+
+    @yield('absence')
+
+    @yield('reason')
+
+    @yield('register')
+
     </body>
 </html>

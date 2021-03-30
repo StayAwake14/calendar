@@ -5,6 +5,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\AbsencesController;
 use App\Http\Controllers\ReasonsController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
