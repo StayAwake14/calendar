@@ -7,18 +7,14 @@
         <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
+        @yield('calendar')
 
-    @yield('login')
+        @yield('profile')
 
-    @yield('calendar')
+        @yield('absence')
 
-    @yield('profile')
+        @yield('reason')
 
-    @yield('absence')
-
-    @yield('reason')
-
-    @yield('register')
-
+        @yield('register')
     </body>
 </html>

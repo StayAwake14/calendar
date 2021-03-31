@@ -14,7 +14,7 @@
                 </div>
             @endif
         </div>
-    <div class="mx-auto text-center mt-5 mb-5">
+    <div class="mx-auto text-center mb-5">
     <h1 class="text-3xl">Reason Add Form</h1>
         <form action=" {{ route('reason.add') }}" method="post">
         @csrf
