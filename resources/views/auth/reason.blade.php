@@ -14,19 +14,20 @@
                 </div>
             @endif
         </div>
-    <div class="mx-auto text-center mb-5">
+    <div class="mx-auto text-center mb-5 w-1/6">
     <h1 class="text-3xl">Reason Add Form</h1>
         <form action=" {{ route('reason.add') }}" method="post">
         @csrf
-            <div class="form-group">
+            <div class="flex flex-col mb-4">
                 <label for="reason">Reason</label>
                 <input class="mb-5 form-input px-4 py-3 rounded-full border" type="text" name="reason">
                 <span class="bg-600-red">@error('reason') {{ $message }} @enderror</span>
             </div>
-            <div class="form-group">
+
+            <div class="flex flex-col mb-4 w-24 mx-auto">
                 <button class="mb-5 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" type="submit">Add</button>
+                <a href="profile" class="py-2 px-4 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-700 focus:outline-none">Back </a>
             </div>
         </form>
-        <a href="profile" class="py-2 px-4 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-700 focus:outline-none">Profile </a>
     </div>
 @endsection

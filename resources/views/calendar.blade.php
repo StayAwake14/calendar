@@ -6,8 +6,8 @@
             @if(Session::get('UserLogged'))
                 <div class="results">
                     <div class="alert alert-success">
-                        <a class="p-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" href="profile">Profile</a>
-                        <a class="p-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" href="logout">Logout</a>
+                        <a class="p-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" href="{{ route('profile') }}">Profile</a>
+                        <a class="p-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </div>
             @else
@@ -32,11 +32,25 @@
             @endif
     </div>
     <div class="h-screen justify-center w-4/5 items-center float-right">
-        <div class="text-center">
+        <div class="text-center mt-5">
             <h1 class="text-4xl">Calendar Absence</h1>
             <h1 class="text-2xl mb-5 mt-5"> {{ $monthName }} </h1>
+            <div class="inline-block">
+                <form action="/calendar/month/{{ $subMonth }}" method="post">
+                @csrf
+                    <input type="hidden" name="month" value="{{ $subMonth }}">
+                    <button class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" type="submit">Previous Month</button>
+                </form>
+            </div>
+            <div class="inline-block">
+                <form action="/calendar/month/{{ $nextMonth }}" method="post">
+                @csrf
+                    <input type="hidden" name="month" value="{{ $nextMonth }}">
+                    <button class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" type="submit">Next Month</button>
+                </form>
+            </div>
         </div>
-        <div>
+        <div class="mt-5">
             <table class="table-auto border-separate border border-black-800 mx-auto text-center">
                 <thead >
                     <tr>
@@ -44,9 +58,9 @@
                     @foreach($calendar as $monthDay)
                         @if($monthDay['day']['event'] !== "")
                             <div class="group relative">
-                                <th class="border border-black bg-{{ $monthDay['day']['color'] }}-300 has-tooltip"> 
+                                <th class="border border-black bg-{{ $monthDay['day']['color'] }}-600 has-tooltip"> 
                                     {{ $monthDay['day']['number'] }}
-                                    <span class="tooltip bg-{{ $monthDay['day']['color'] }}-600 text-left p-2 rounded-full py-3 px-6"> {{ $monthDay['day']['event'] }}</span>
+                                    <span class="tooltip bg-{{ $monthDay['day']['color'] }}-300 text-left p-2 rounded-full py-3 px-6"> {{ $monthDay['day']['event'] }}</span>
                                 </th>
                             </div>
                         @elseif($monthDay['day']['weekend'] !== "")
@@ -70,16 +84,22 @@
                         <td class="border border-black font-bold p-2"> {{$user['details']['fname'] }} {{$user['details']['lname'] }} </td>
                         @foreach($user['calendar'] as $userDay)
                             @if($userDay['reason'] !== "")
-                                @if($userDay['reason'] !== "Weekend")
+                                @if($userDay['reason'] === "Weekend")
                                 <div class="group relative">
                                     <td class="border border-black bg-{{ $userDay['bgcolor'] }}-600 has-tooltip">
-                                        <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6"><b>Reason:</b> {{  $userDay['reason'] }} <br> <b>Comment:</b> {{ $userDay['comment'] }}</span>
+                                        <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6 font-bold">{{  $userDay['reason'] }}</span>
+                                    </td>
+                                </div>
+                                @elseif($userDay['reason'] === "Event")
+                                <div class="group relative">
+                                    <td class="border border-black bg-{{ $userDay['bgcolor'] }}-600 has-tooltip">
+                                        <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6 font-bold">{{  $userDay['event'] }}</span>
                                     </td>
                                 </div>
                                 @else
                                 <div class="group relative">
                                     <td class="border border-black bg-{{ $userDay['bgcolor'] }}-600 has-tooltip">
-                                        <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6"><b>{{  $userDay['reason'] }}</b></span>
+                                        <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6"><b> Reason: </b>{{  $userDay['reason'] }} </br> <b>Comment: </b> {{  $userDay['comment'] }} </span>
                                     </td>
                                 </div>
                                 @endif
