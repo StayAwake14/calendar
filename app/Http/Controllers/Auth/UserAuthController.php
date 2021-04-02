@@ -242,6 +242,9 @@ class UserAuthController extends Controller
         if(session()->has('UserLogged')){
             $user = users::where('id', '=', session('UserLogged'))->first();
             $LoggedUserInfo = $user;
+            $created = $LoggedUserInfo->created_at->year;
+            $updated = $LoggedUserInfo->updated_at->year;
+            $accountYears = range($created, $updated);
 
         }
         else
@@ -249,7 +252,7 @@ class UserAuthController extends Controller
             return redirect('calendar');
         }
 
-        return view('profile', compact('LoggedUserInfo', 'calendar', 'monthName'));
+        return view('profile', compact('LoggedUserInfo', 'calendar', 'monthName', 'year', 'month', 'accountYears'));
     }
 
     function logout(){
@@ -259,13 +262,13 @@ class UserAuthController extends Controller
         }
     }
 
-    function show($curr_month)
+    function show($curr_month, $year)
     {
             BusinessDay::enable('Carbon\Carbon');
             Carbon::setHolidaysRegion('pl');
             $holidays = Carbon::getHolidays('pl');
             $users = users::all()->toArray();
-            $date = Carbon::parse("2021-".$curr_month."-01");
+            $date = Carbon::parse("$year-".$curr_month."-01");
             
             $year = $date->year;
             $month= $date->month;
@@ -394,7 +397,7 @@ class UserAuthController extends Controller
     
             $absences = DB::table('absences')
                 ->where('user_id', session('UserLogged'))
-                ->where('datefrom', 'like', "2021-0$month%")
+                ->where('datefrom', 'like', "$year-0$month%")
                 ->get();
     
             foreach($absences as $absence)
@@ -433,14 +436,17 @@ class UserAuthController extends Controller
             if(session()->has('UserLogged')){
                 $user = users::where('id', '=', session('UserLogged'))->first();
                 $LoggedUserInfo = $user;
-    
+                $created = $LoggedUserInfo->created_at->year;
+                $updated = $LoggedUserInfo->updated_at->year;
+                $accountYears = range($created, $updated);
+  
             }
             else
             {
                 return redirect('calendar');
             }
 
-            return view('profile', compact('LoggedUserInfo', 'calendar', 'monthName'));
+            return view('profile', compact('LoggedUserInfo', 'calendar', 'monthName', 'year', 'month', 'accountYears'));
     }
     
 

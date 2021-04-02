@@ -32,8 +32,10 @@ class CalendarController extends Controller
         $fday = $date->firstOfMonth()->format("j");
         $lday = $date->lastOfMonth()->format("j");
         $subMonth = $date->subMonth()->month;
+        $subYear = $date->year;
         $nextMonth = $dateNext->addMonth()->month;
-    
+        $nextYear = $date->year;
+        
 
      /*   if($request->month)
         {
@@ -198,55 +200,49 @@ class CalendarController extends Controller
             'calendar' => $calendar,
             'month_days' => $monthLength,
             'monthName' => $monthName,
+            'month' => $month,
+            'matrix' => $matrix,
+            'year' => $year,
             'subMonth' => $subMonth,
             'nextMonth' => $nextMonth,
-            'matrix' => $matrix
+            'subYear' => $subYear,
+            'nextYear' => $nextYear,
         ]);
     }
 
-    public function show($curr_month)
+    public function show($curr_month, $year, Request $request)
     {
-       
+
         BusinessDay::enable('Carbon\Carbon');
         Carbon::setHolidaysRegion('pl');
         $holidays = Carbon::getHolidays('pl');
         $users = users::all()->toArray();
+        $date = Carbon::parse("$year-".$curr_month."-01");
+       
+        $month = $date->month;
+        $subMonth = $date->subMonths(1)->month;
+        $subYear = $date->year;
+        $nextMonth = $date->addMonths(2)->month;
+        $nextYear = $date->year;
+        $date = Carbon::parse("$year-".$curr_month."-01");
 
-        if($curr_month)
-        {
-            $date = Carbon::parse("2021-".$curr_month."-01");
-            $dateNext = Carbon::parse("2021-".$curr_month."-01");
-            $monthName = $date->format("F");
-            $year = $date->year;
-            $month = $curr_month;
-            $monthLength = $date->daysInMonth;
-            $fday = $date->firstOfMonth()->format("j");
-            $lday = $date->lastOfMonth()->format("j");
-            $subMonth = $curr_month-1;
-            if($subMonth == 0)
-            {
-                $subMonth = 12;
-            }
-            $nextMonth = $dateNext->addMonth()->month;
-        }
-        else
-        {
-            $date = Carbon::now();
-            $dateNext = Carbon::now();
-            $monthName = $date->format("F");
-            $year = $date->year;
-            $month= $date->month;
-            $monthLength = $date->daysInMonth;
-            $fday = $date->firstOfMonth()->format("j");
-            $lday = $date->lastOfMonth()->format("j");
-            $subMonth = $date->subMonth()->month;
-            $nextMonth = $dateNext->addMonth()->month;
-        }
+        
+        $monthName = $date->format("F");
+        $year = $date->year;
+        $month = $date->month;
+        $monthLength = $date->daysInMonth;
+        $fday = $date->firstOfMonth()->format("j");                                                                                                                                                 
+        $lday = $date->lastOfMonth()->format("j");
 
-    /*    echo "Length: ".$monthLength."<br>";
-        echo "Previous month: ".$subMonth."<br>";
-        echo "Current month: ".$month."<br>";
-        echo "Next Month: ".$nextMonth."<br>"; */
+       // $dateNext = Carbon::parse("$year-".$curr_month."-01")->subMonths(1);
+
+
+       /*echo "fday: ".$fday."<br>";
+       echo "lday: ".$lday."<br>";
+        echo "Length: ".$monthLength."<br>";
+       // echo "Previous month: ".$subMonth."<br>";
+        echo "Current month: ".$month."<br>";*/
+        //echo "Next Month: ".$nextMonth."<br>"; 
 
     //    $usersCount = $users->count();
         $matrix = array();
@@ -337,7 +333,7 @@ class CalendarController extends Controller
         {
             $absences = DB::table('absences')
             ->where('user_id', $user['id'])
-            ->where('datefrom', 'like', "2021-0$curr_month%")
+            ->where('datefrom', 'like', "$year-0$curr_month%")
             ->get();
 
            // echo "2021-0$curr_month%";
@@ -386,9 +382,13 @@ class CalendarController extends Controller
             'calendar' => $calendar,
             'month_days' => $monthLength,
             'monthName' => $monthName,
+            'month' => $month,
             'subMonth' => $subMonth,
             'nextMonth' => $nextMonth,
-            'matrix' => $matrix
+            'subYear' => $subYear,
+            'nextYear' => $nextYear,
+            'matrix' => $matrix,
+            'year' => $year
         ]);
     }
 } 

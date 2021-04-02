@@ -19,7 +19,7 @@ use App\Http\Controllers\PagesController;
 */
 
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
-Route::post('/calendar/month/{id}', [CalendarController::class, 'show'])->name('calendar.show');
+Route::get('/calendar/month/{id}/year/{id2}', [CalendarController::class, 'show'])->name('calendar.show');
 
 Route::get('/absence', [AbsencesController::class, 'absences'])->name('absence');
 Route::post('/absence', [AbsencesController::class, 'add'])->name('absence.add');
@@ -33,4 +33,5 @@ Route::post('create', [UserAuthController::class, 'create'])->name('auth.create'
 Route::post('check', [UserAuthController::class, 'check'])->name('auth.check');
 Route::get('profile', [UserAuthController::class, 'profile'])->name('profile');
 Route::get('/profile/month/{id}', [UserAuthController::class, 'show'])->name('profile.show');
+Route::get('/profile/month/{id}/year/{year}', [UserAuthController::class, 'show'])->name('profile.show2');
 Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');

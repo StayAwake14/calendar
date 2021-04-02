@@ -34,20 +34,11 @@
     <div class="h-screen justify-center w-4/5 items-center float-right">
         <div class="text-center mt-5">
             <h1 class="text-4xl">Calendar Absence</h1>
+            <h1 class="text-2xl mb-5 mt-5"> {{ $year }} </h1>
             <h1 class="text-2xl mb-5 mt-5"> {{ $monthName }} </h1>
             <div class="inline-block">
-                <form action="/calendar/month/{{ $subMonth }}" method="post">
-                @csrf
-                    <input type="hidden" name="month" value="{{ $subMonth }}">
-                    <button class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" type="submit">Previous Month</button>
-                </form>
-            </div>
-            <div class="inline-block">
-                <form action="/calendar/month/{{ $nextMonth }}" method="post">
-                @csrf
-                    <input type="hidden" name="month" value="{{ $nextMonth }}">
-                    <button class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" type="submit">Next Month</button>
-                </form>
+                <a class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{URL::route('calendar.show', [$subMonth, $subYear] )}}">Previous</a>
+                <a class="py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{URL::route('calendar.show', [$nextMonth, $nextYear] )}}">Next</a>
             </div>
         </div>
         <div class="mt-5">

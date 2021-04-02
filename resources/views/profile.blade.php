@@ -19,26 +19,31 @@
                 <div class="flex justify-between h-screen">
                     <div class="flex justify-center items-center">
                         <div class="flex flex-col">
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/1">January</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/2">February</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/3">March</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/4">April</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/5">May</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/6">June</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/7">July</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/8">August</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/9">September</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/10">Octoboer</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/11">November</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="/profile/month/12">December</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [1, $year] )}}">January</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [2, $year] )}}">February</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [3, $year] )}}">March</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [4, $year] )}}">April</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [5, $year] )}}">May</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [6, $year] )}}">June</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [7, $year] )}}">July</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [8, $year] )}}">August</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [9, $year] )}}">September</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [10, $year] )}}">Octoboer</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [11, $year] )}}">November</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [12, $year] )}}">December</a>
                         </div>
                     </div>
                 </div>
        
                 <div class="flex justify-center items-center">
                     <div class="flex-col">
+                        
                         <h1 class="text-lg text-grey-darkest text-5xl p-5"> Your personal calendar </h1>
-                        <h1 class="text-lg text-grey-darkest uppercase text-4xl p-5"> {{$monthName}} </h1>
+                        <h1 class="text-lg text-grey-darkest uppercase text-4xl p-5"> {{$year}} </h1>
+                            @foreach($accountYears as $year)
+                                <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [$month, $year] )}}"> {{ $year }}</a>
+                            @endforeach
+                        <h1 class="text-lg text-grey-darkest uppercase text-4xl mt-5 p-5"> {{$monthName}} </h1>
                         <table class="table-fixed mx-auto" cellspacing="10">
                             <thead>
                                 <tr>
