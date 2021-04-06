@@ -13,7 +13,10 @@ class users extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['login', 'password', 'email', 'fname', 'lname'];
+    protected $fillable = ['login', 'password', 'email', 'fname', 'lname', 'leader_mail', 'team_id'];
 
-    
+    public function absence()
+    {
+        return $this->hasMany('App\Models\absences', 'user_id');
+    }
 }

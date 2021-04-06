@@ -28,7 +28,7 @@
                         <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none" type="submit">Login</button>
                     </div>
                 </form>
-                <a href="register" class="mt-5 p-3 underline">Don't have an account? Create now!</a>
+                <a href="{{ route('register') }}" class="mt-5 p-3 underline">Don't have an account? Create now!</a>
             @endif
     </div>
     <div class="h-screen justify-center w-4/5 items-center float-right">
@@ -90,6 +90,9 @@
                                 @else
                                 <div class="group relative">
                                     <td class="border border-black bg-{{ $userDay['bgcolor'] }}-600 has-tooltip">
+                                        @if($userDay['confirmed'])
+                                        <span class="text-{{ $userDay['bgcolor'] }}-100 font-bold">A</span>
+                                        @endif
                                         <span class="tooltip bg-{{ $userDay['bgcolor'] }}-300 text-left p-2 rounded-full py-3 px-6"><b> Reason: </b>{{  $userDay['reason'] }} </br> <b>Comment: </b> {{  $userDay['comment'] }} </span>
                                     </td>
                                 </div>

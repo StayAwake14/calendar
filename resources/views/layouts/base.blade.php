@@ -16,5 +16,13 @@
         @yield('reason')
 
         @yield('register')
+
+        @yield('team')
+
+        @yield('leader')
+        
+        @yield('verify')
+
+        @yield('manage');
     </body>
 </html>

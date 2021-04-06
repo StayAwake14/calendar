@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\users;
 use App\Models\absences;
 use App\Models\reasons;
+use App\Models\teams;
 
 
 use Cmixin\BusinessDay;
@@ -41,6 +42,9 @@ class UserAuthController extends Controller
         $user->email = $request->email;
         $user->fname = $request->fname;
         $user->lname = $request->lname;
+        $user->leader_mail = $request->email;
+        $user->team_id = 0;
+        $user->job_title = "";
 
         if($user->save()){
             return back()->with('success', 'You have been successfully registered!');
@@ -208,7 +212,7 @@ class UserAuthController extends Controller
                         break;
                     }
                 }
-
+                $calendar[$key][$day]['day']['confirmed']= $absence->confirmed;
             }
 
             // OLD CONCEPTION WORSE
@@ -241,7 +245,11 @@ class UserAuthController extends Controller
 
         if(session()->has('UserLogged')){
             $user = users::where('id', '=', session('UserLogged'))->first();
-            $LoggedUserInfo = $user;
+            $teams = teams::with('user')
+            ->where('id', '=', $user->team_id)
+            ->first();
+            $LoggedUserInfo = $teams;
+
             $created = $LoggedUserInfo->created_at->year;
             $updated = $LoggedUserInfo->updated_at->year;
             $accountYears = range($created, $updated);
@@ -429,17 +437,21 @@ class UserAuthController extends Controller
                             break;
                         }
                     }
-    
+                    $calendar[$key][$day]['day']['confirmed']= $absence->confirmed;
                 }
             }
 
             if(session()->has('UserLogged')){
                 $user = users::where('id', '=', session('UserLogged'))->first();
-                $LoggedUserInfo = $user;
+
+                $userInfo = teams::with('user')
+                ->where('id', '=', $user->team_id)
+                ->first();
+                $LoggedUserInfo = $userInfo;
+
                 $created = $LoggedUserInfo->created_at->year;
                 $updated = $LoggedUserInfo->updated_at->year;
                 $accountYears = range($created, $updated);
-  
             }
             else
             {

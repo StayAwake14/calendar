@@ -191,6 +191,7 @@ class CalendarController extends Controller
                     }
 
                     $matrix[$user['id']]['calendar'][$day]['comment'] = $absence->description;
+                    $matrix[$user['id']]['calendar'][$day]['confirmed'] = $absence->confirmed;
                 }
                
             }
@@ -373,6 +374,7 @@ class CalendarController extends Controller
                     }
 
                     $matrix[$user['id']]['calendar'][$day]['comment'] = $absence->description;
+                    $matrix[$user['id']]['calendar'][$day]['confirmed'] = $absence->confirmed;
                 }
                
             }

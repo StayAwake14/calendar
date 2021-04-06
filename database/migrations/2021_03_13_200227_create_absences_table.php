@@ -20,6 +20,7 @@ class CreateAbsencesTable extends Migration
             $table->date('datefrom');
             $table->date('dateto');
             $table->string('description');
+            $table->boolean('confirmed');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

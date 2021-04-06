@@ -14,4 +14,9 @@ class reasons extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['reason_name'];
+
+    public function absence()
+    {
+        return $this->hasMany('App\Models\absences');
+    }
 }

@@ -5,24 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class absences extends Model
+class leaders extends Model
 {
     use HasFactory;
 
-    protected $table = 'absences';
+    protected $table = 'leaders';
 
     protected $primaryKey ='id';
-
-    protected $fillable = ['datefrom', 'dateto', 'description', 'user_id', 'reason_id'];
 
     public function user()
     {
         return $this->belongsTo('App\Models\users');
     }
 
-    public function reason()
+    public function team()
     {
-        return $this->belongsTo('App\Models\reasons');
+        return $this->belongsTo('App\Models\teams');
     }
 
 }
