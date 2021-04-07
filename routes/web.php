@@ -29,6 +29,7 @@ Route::post('/absence', [AbsencesController::class, 'add'])->name('absence.add')
 
 Route::get('/verify', [AbsencesController::class, 'toVerify'])->name('verify');
 Route::put('/verify/approve/absence/{id}', [AbsencesController::class, 'accept'])->name('verify.accept');
+Route::post('/verify/decline/absence/{id}', [AbsencesController::class, 'decline'])->name('verify.decline');
 
 Route::get('/reason', [ReasonsController::class, 'reasons'])->name('reason');
 Route::post('/reason', [ReasonsController::class, 'add'])->name('reason.add');

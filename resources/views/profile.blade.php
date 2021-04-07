@@ -4,12 +4,12 @@
     @if(Session::get('UserLogged'))
         <div class="calendar text-center mx-auto">
             <div class="flex justify-between h-screen">
-                <div class="flex justify-center items-center mx-auto">
+                <div class="flex justify-center items-center w-2/5">
                     <div class="flex-col">
-                        <p class="p-3 ">First Name: {{ $LoggedUserInfo->user->fname }} </p>
-                        <p class="p-3">Last Name: {{ $LoggedUserInfo->user->lname }} </p>
-                        <p class="p-3 mb-5">Email: {{ $LoggedUserInfo->user->email }} </p>
-                        <p class="p-3 ">Team: {{ $LoggedUserInfo->team_name }} </p>
+                        <p class="p-3 ">First Name: {{ $LoggedUserInfo->fname }} </p>
+                        <p class="p-3">Last Name: {{ $LoggedUserInfo->lname }} </p>
+                        <p class="p-3 mb-5">Email: {{ $LoggedUserInfo->email }} </p>
+                        <p class="p-3 ">Team: {{ $LoggedUserInfo->team->team_name }} </p>
                         <div class="buttons mt-5">
                             <div class="inline-block">
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('calendar') }}">Calendar</a>
@@ -17,7 +17,7 @@
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('absence') }}">Add Absence</a>
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('leader') }}">Add Leader</a>
                             </div>
-                            <div class="mt-5 inline-block">
+                            <div class="mt-5 block">
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('team') }}">Add Team</a>
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('verify') }}">Verify Absences</a>
                                 <a class="p-5 mt-5 py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none" href="{{ route('manage') }}">Manage Users</a>
@@ -27,21 +27,21 @@
                     </div>
                    
                 </div>
-                <div class="flex justify-between h-screen mx-auto">
+                <div class="flex justify-between h-screen">
                     <div class="flex justify-center items-center">
                         <div class="flex flex-col">
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [1, $year] )}}">January</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [2, $year] )}}">February</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [3, $year] )}}">March</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [4, $year] )}}">April</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [5, $year] )}}">May</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [6, $year] )}}">June</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [7, $year] )}}">July</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [8, $year] )}}">August</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [9, $year] )}}">September</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [10, $year] )}}">Octoboer</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [11, $year] )}}">November</a>
-                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{URL::route('profile.show2', [12, $year] )}}">December</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [1, $year] )}}">January</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [2, $year] )}}">February</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [3, $year] )}}">March</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [4, $year] )}}">April</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [5, $year] )}}">May</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [6, $year] )}}">June</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [7, $year] )}}">July</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [8, $year] )}}">August</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [9, $year] )}}">September</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [10, $year] )}}">Octoboer</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [11, $year] )}}">November</a>
+                            <a class="p-5 my-2 py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none" href="{{ route('profile.show2', [12, $year] )}}">December</a>
                         </div>
                     </div>
                 </div>

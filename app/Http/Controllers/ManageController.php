@@ -11,15 +11,20 @@ class ManageController extends Controller
 {
     public function manage(){
         $leaders = leaders::with(['user','team'])
-        ->where('user_id', '=', session()->has('UserLogged'))
-        ->get();
+        ->where('user_id', '=', session('UserLogged'))
+        ->first();
+
         // Check if user is able to manage any team
-        if(!empty($leaders))
+        if(!is_null($leaders))
         {
-            $users = users::all()
-            ->toArray();
+
+            $users = users::with('team')
+            ->where('team_id', '=', $leaders->team_id)
+            ->get();
+            
             $teams = teams::all()
             ->toArray();
+            
         }
         else
         {

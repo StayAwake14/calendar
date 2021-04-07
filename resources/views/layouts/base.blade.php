@@ -23,6 +23,12 @@
         
         @yield('verify')
 
-        @yield('manage');
+        @yield('manage')
+
+        @yield('verification_mail')
+
+        @yield('absence_add')
+
+        @yield('absence_decline')
     </body>
 </html>

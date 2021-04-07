@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('fname');
             $table->string('lname');
-            $table->string('leader_mail');
             $table->string('job_title');
             $table->timestamps();
             $table->unsignedInteger('team_id');

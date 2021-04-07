@@ -21,7 +21,7 @@
             <label for="reason">Leader: </label>
             <select class="form-input mt-5 px-4 py-3 rounded-full border" type="text" name="user_id">
             @foreach($users as $user)
-                <option value="{{ $user['id'] }}"> {{ $user["fname"] }} </option>
+                <option value="{{ $user['id'] }}"> {{ $user["fname"] }} {{ $user["lname"] }} </option>
             @endforeach
             </select>
             </br>

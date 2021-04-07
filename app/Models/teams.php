@@ -17,7 +17,7 @@ class teams extends Model
 
     public function leader()
     {
-        return $this->hasMany('App\Models\leaders');
+        return $this->hasMany('App\Models\leaders', 'id');
     }
 
     public function user()

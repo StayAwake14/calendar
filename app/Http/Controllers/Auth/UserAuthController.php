@@ -42,7 +42,6 @@ class UserAuthController extends Controller
         $user->email = $request->email;
         $user->fname = $request->fname;
         $user->lname = $request->lname;
-        $user->leader_mail = $request->email;
         $user->team_id = 0;
         $user->job_title = "";
 
@@ -244,11 +243,13 @@ class UserAuthController extends Controller
         }
 
         if(session()->has('UserLogged')){
-            $user = users::where('id', '=', session('UserLogged'))->first();
+            $user = users::with('team')->where('id', '=', session('UserLogged'))->first();
+
             $teams = teams::with('user')
             ->where('id', '=', $user->team_id)
             ->first();
-            $LoggedUserInfo = $teams;
+            
+            $LoggedUserInfo = $user;
 
             $created = $LoggedUserInfo->created_at->year;
             $updated = $LoggedUserInfo->updated_at->year;
@@ -442,13 +443,14 @@ class UserAuthController extends Controller
             }
 
             if(session()->has('UserLogged')){
-                $user = users::where('id', '=', session('UserLogged'))->first();
+                $user = users::with('team')->where('id', '=', session('UserLogged'))->first();
 
-                $userInfo = teams::with('user')
+                $teams = teams::with('user')
                 ->where('id', '=', $user->team_id)
                 ->first();
-                $LoggedUserInfo = $userInfo;
-
+                
+                $LoggedUserInfo = $user;
+    
                 $created = $LoggedUserInfo->created_at->year;
                 $updated = $LoggedUserInfo->updated_at->year;
                 $accountYears = range($created, $updated);

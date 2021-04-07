@@ -23,6 +23,11 @@ class LeadersController extends Controller
         $leader->user_id = $request->user_id;
         $leader->team_id = $request->team_id;
 
+        /*$users = users::where('id', '=', $request->user_id)
+        ->first();
+
+        $users->team_id = $request->team_id;*/
+
         if($leader->save()){
             return back()->with('success', 'Leader has been successfully assigned!');
         } else{
