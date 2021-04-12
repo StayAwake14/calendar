@@ -17,6 +17,8 @@
 
         @yield('register')
 
+        @yield('login')
+
         @yield('team')
 
         @yield('leader')

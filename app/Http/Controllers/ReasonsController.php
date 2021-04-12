@@ -15,6 +15,7 @@ class ReasonsController extends Controller
     public function add(Request $request){
         $reasons = new reasons;
         $reasons->reason_name = $request->reason;
+        $reasons->reason_color = $request->color;
         
         if($reasons->save())
         {

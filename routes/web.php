@@ -22,7 +22,7 @@ use App\Http\Controllers\ManageController;
 */
 
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
-Route::get('/calendar/month/{id}/year/{id2}', [CalendarController::class, 'show'])->name('calendar.show');
+Route::get('/calendar/month/{id}/year/{id2}', [CalendarController::class, 'switch'])->name('calendar.switch');
 
 Route::get('/absence', [AbsencesController::class, 'absences'])->name('absence');
 Route::post('/absence', [AbsencesController::class, 'add'])->name('absence.add');
@@ -43,7 +43,7 @@ Route::post('/leader', [LeadersController::class, 'add'])->name('leader.add');
 Route::get('/manage', [ManageController::class, 'manage'])->name('manage');
 Route::put('/manage/edit/{id}', [ManageController::class, 'edit'])->name('manage.edit');
 
-Route::get('login', [UserAuthController::class, 'login']);
+Route::get('login', [UserAuthController::class, 'login'])->name('login');
 Route::get('register', [UserAuthController::class, 'register'])->name('register');
 Route::post('create', [UserAuthController::class, 'create'])->name('auth.create');
 Route::post('check', [UserAuthController::class, 'check'])->name('auth.check');

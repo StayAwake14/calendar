@@ -7885,6 +7885,22 @@ video {
   border-collapse: separate;
 }
 
+.hover\:border-collapse:hover {
+  border-collapse: collapse;
+}
+
+.hover\:border-separate:hover {
+  border-collapse: separate;
+}
+
+.focus\:border-collapse:focus {
+  border-collapse: collapse;
+}
+
+.focus\:border-separate:focus {
+  border-collapse: separate;
+}
+
 .border-transparent {
   border-color: transparent;
 }
@@ -34922,20 +34938,80 @@ video {
   animation-name: slideOutUp;
 }
 
+body {
+  overflow: hidden;
+}
+
 .tooltip {
   visibility: hidden;
   position: absolute;
+  top: -90px;
+  right: 44px;
+  min-width: 400px;
+  -webkit-animation: backOutDown 300ms forwards;
+  animation: backOutDown 300ms forwards;
+}
+
+.tooltip-image {
+  visibility: hidden;
+  position: fixed;
+  top: -250px;
+  right: 0px;
+  width: 1000px !important;
+  height: 200px !important;
+  -webkit-animation: zoomOutDown 300ms forwards;
+  animation: zoomOutDown 300ms forwards;
+}
+
+.tooltip-image image {
+  display: block;
+  width: 1000px !important;
+  height: 200px !important;
+}
+
+.has-tooltip-image:hover .tooltip-image {
+  visibility: visible;
+  z-index: 100000;
   transition-duration: 300ms;
-  -webkit-animation: fadeOut 300ms linear;
-  animation: fadeOut 300ms linear;
+  -webkit-animation: zoomInDown 300ms forwards;
+  animation: zoomInDown 300ms forwards;
 }
 
 .has-tooltip:hover .tooltip {
   visibility: visible;
-  z-index: 100;
+  z-index: 100000;
   transition-duration: 300ms;
-  -webkit-animation: fadeIn 300ms linear;
-  animation: fadeIn 300ms linear;
+  -webkit-animation: backInDown 300ms forwards;
+  animation: backInDown 300ms forwards;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0.2em 0.5em !important;
+}
+
+.calendar {
+  overflow: hidden i !important;
+}
+
+td, th {
+  transition-duration: 300ms;
+  padding: 5px 7px;
+}
+
+td:hover, th:hover {
+  transition-duration: 300ms;
+  transform: scale(1.1, 1.1);
+}
+
+td:hover .tooltip, th:hover .tooltip {
+  min-width: 200px;
+  text-align: center;
+  z-index: 10001;
+}
+
+.neon-white {
+  text-shadow: 1px 1px 30px white;
 }
 
 @media (min-width: 640px) {
@@ -42270,6 +42346,22 @@ video {
   }
 
   .sm\:border-separate {
+    border-collapse: separate;
+  }
+
+  .sm\:hover\:border-collapse:hover {
+    border-collapse: collapse;
+  }
+
+  .sm\:hover\:border-separate:hover {
+    border-collapse: separate;
+  }
+
+  .sm\:focus\:border-collapse:focus {
+    border-collapse: collapse;
+  }
+
+  .sm\:focus\:border-separate:focus {
     border-collapse: separate;
   }
 
@@ -72820,6 +72912,22 @@ video {
     border-collapse: separate;
   }
 
+  .md\:hover\:border-collapse:hover {
+    border-collapse: collapse;
+  }
+
+  .md\:hover\:border-separate:hover {
+    border-collapse: separate;
+  }
+
+  .md\:focus\:border-collapse:focus {
+    border-collapse: collapse;
+  }
+
+  .md\:focus\:border-separate:focus {
+    border-collapse: separate;
+  }
+
   .md\:border-transparent {
     border-color: transparent;
   }
@@ -103364,6 +103472,22 @@ video {
   }
 
   .lg\:border-separate {
+    border-collapse: separate;
+  }
+
+  .lg\:hover\:border-collapse:hover {
+    border-collapse: collapse;
+  }
+
+  .lg\:hover\:border-separate:hover {
+    border-collapse: separate;
+  }
+
+  .lg\:focus\:border-collapse:focus {
+    border-collapse: collapse;
+  }
+
+  .lg\:focus\:border-separate:focus {
     border-collapse: separate;
   }
 
@@ -133914,6 +134038,22 @@ video {
     border-collapse: separate;
   }
 
+  .xl\:hover\:border-collapse:hover {
+    border-collapse: collapse;
+  }
+
+  .xl\:hover\:border-separate:hover {
+    border-collapse: separate;
+  }
+
+  .xl\:focus\:border-collapse:focus {
+    border-collapse: collapse;
+  }
+
+  .xl\:focus\:border-separate:focus {
+    border-collapse: separate;
+  }
+
   .xl\:border-transparent {
     border-color: transparent;
   }
@@ -164458,6 +164598,22 @@ video {
   }
 
   .\32xl\:border-separate {
+    border-collapse: separate;
+  }
+
+  .\32xl\:hover\:border-collapse:hover {
+    border-collapse: collapse;
+  }
+
+  .\32xl\:hover\:border-separate:hover {
+    border-collapse: separate;
+  }
+
+  .\32xl\:focus\:border-collapse:focus {
+    border-collapse: collapse;
+  }
+
+  .\32xl\:focus\:border-separate:focus {
     border-collapse: separate;
   }
 

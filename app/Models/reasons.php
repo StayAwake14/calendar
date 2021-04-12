@@ -13,7 +13,7 @@ class reasons extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['reason_name'];
+    protected $fillable = ['reason_name', 'reason_color'];
 
     public function absence()
     {

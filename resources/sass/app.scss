@@ -3,19 +3,81 @@
 @tailwind utilities;
 
 @import "~animate.css/animate";
+body{
+        overflow:hidden;
+}
 
 .tooltip {
-    visibility: hidden;
-    position: absolute;
-    transition-duration: 300ms;
-    -webkit-animation: fadeOut 300ms linear;
-            animation: fadeOut 300ms linear;
+        visibility: hidden;
+        position: absolute;
+        top:-90px;
+        right:44px;
+        min-width:400px;
+    //    transition-duration: 300ms;
+        -webkit-animation: backOutDown 300ms forwards;
+            animation: backOutDown 300ms forwards;
   }
+
+.tooltip-image {
+        visibility: hidden;
+        position: fixed;
+        top:-250px;
+        right:0px;
+      //  transition-duration: 300ms;
+        width:1000px !important;
+        height:200px !important;
+        -webkit-animation: zoomOutDown 300ms forwards;
+                animation: zoomOutDown 300ms forwards;
+        image{
+                display:block;
+                width:1000px !important;
+                height:200px !important;
+        }
+}
+
+.has-tooltip-image:hover .tooltip-image {
+        visibility: visible;
+        z-index: 100000;
+        transition-duration: 300ms;
+        -webkit-animation: zoomInDown 300ms forwards;
+                animation: zoomInDown 300ms forwards;
+}
   
-  .has-tooltip:hover .tooltip {
+.has-tooltip:hover .tooltip {
     visibility: visible;
-    z-index: 100;
+    z-index: 100000;
     transition-duration: 300ms;
-    -webkit-animation: fadeIn 300ms linear;
-            animation: fadeIn 300ms linear;
+    -webkit-animation: backInDown 300ms forwards;
+            animation: backInDown 300ms forwards;
   }
+
+table {
+        border-collapse:separate !important; 
+        border-spacing: .2em .5em !important;
+}
+
+.calendar{
+          overflow:hidden i !important;
+}
+
+
+td, th{
+        transition-duration: 300ms;
+        padding:5px 7px;
+}
+
+td:hover, th:hover{
+        transition-duration: 300ms;
+        transform:scale(1.1, 1.1);
+
+        .tooltip{
+                min-width:200px;
+                text-align:center;
+                z-index:10001;
+        }
+
+}
+
+.neon-white{
+        text-shadow:1px 1px 30px white;
+}
